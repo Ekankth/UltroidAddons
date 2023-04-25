@@ -56,8 +56,7 @@ async def _(event):
     await event.client(UpdateProfileRequest(last_name=last_name))
     await event.client(UpdateProfileRequest(about=user_bio))
     if profile_pic:
-        pfile = await event.client.upload_file(profile_pic)
-        await event.client(UploadProfilePhotoRequest(pfile))
+       UploadProfilePhotoRequest(file=await client.upload_file(f))
     await eve.delete()
     await event.client.send_message(
         event.chat_id, f"**I am `{first_name}` from now...**", reply_to=reply_message
